@@ -1,5 +1,7 @@
 ---
-
+const pageTitle="Astro Home";
+const skills=["A","B","C"]
+const skillColor = "lightblue";
 ---
 
 <html lang="en">
@@ -8,7 +10,17 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
+		<style define:vars={{skillColor}}>
+			h1 {
+				color: purle;
+				font-size: 4 rem;
+			}
+			.skill {
+				color: var(--skillColor);
+				font-weight: bold;
+			}
+		</style>
 	</head>
 	<body>
         <a href="/">Home</a>
@@ -16,7 +28,10 @@
         <a href="/blog/">Blog</a>
         
         
-		<h1>My Astro Home Page</h1>
+		<h1>{pageTitle}</h1>
 		<p>This is content of the page</p>
+		<ul>
+			{skills.map((skill) => <li class="skill"> {skill}</li>)}
+		</ul>
 	</body>
 </html>
